@@ -3,10 +3,10 @@ services:
     image: mariadb:lts
     container_name: db_wordpress
     environment:
-      MYSQL_ROOT_PASSWORD: password_super_segura
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASS}
       MYSQL_DATABASE: wordpress_db
-      MYSQL_USER: wp_user
-      MYSQL_PASSWORD: wp_password
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASS}
     # ATENCIÓN: No hay apartado "ports". Esta máquina es invisible desde el exterior.
 
   servidor_web:
@@ -16,8 +16,8 @@ services:
       - "8086:80" # Solo exponemos la web al exterior
     environment:
       WORDPRESS_DB_HOST: base_datos_bunker # ¡El truco de la telepatía!
-      WORDPRESS_DB_USER: wp_user
-      WORDPRESS_DB_PASSWORD: wp_password
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASS}
       WORDPRESS_DB_NAME: wordpress_db
     depends_on:
       - base_datos_bunker
