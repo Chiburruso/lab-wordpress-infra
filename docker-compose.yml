@@ -13,7 +13,7 @@ services:
     image: wordpress:latest
     container_name: web_wordpress
     ports:
-      - "8085:80" # Solo exponemos la web al exterior
+      - "8086:80" # Solo exponemos la web al exterior
     environment:
       WORDPRESS_DB_HOST: base_datos_bunker # ¡El truco de la telepatía!
       WORDPRESS_DB_USER: wp_user
