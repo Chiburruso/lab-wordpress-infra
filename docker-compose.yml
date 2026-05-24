@@ -7,6 +7,8 @@ services:
       MYSQL_DATABASE: wordpress_db
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASS}
+    volumes:
+      - ./datos_mysql:/var/lib/mysql
     # ATENCIÓN: No hay apartado "ports". Esta máquina es invisible desde el exterior.
 
   servidor_web:
@@ -19,5 +21,7 @@ services:
       WORDPRESS_DB_USER: ${DB_USER}
       WORDPRESS_DB_PASSWORD: ${DB_PASS}
       WORDPRESS_DB_NAME: wordpress_db
+    volumes:
+      - ./datos_wordpress:/var/www/html
     depends_on:
       - base_datos_bunker
