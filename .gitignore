@@ -1,3 +1,4 @@
 .env
 datos_mysql/
 datos_wordpress/
+*.tar.gz
